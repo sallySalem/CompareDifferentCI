@@ -13,6 +13,10 @@ jobs:
     #      - run:
     #         name: Chmod permissions #if permission for Gradlew Dependencies fail, use this.
     #         command: sudo chmod +x ./gradlew
+
+    - run:
+        name: Approve license for build tools
+        command: (echo y; echo y; echo y; echo y; echo y; echo y) | $ANDROID_HOME/tools/bin/sdkmanager --licenses
     - run:
         name: Download Dependencies
         command: ./gradlew androidDependencies
@@ -28,3 +32,5 @@ jobs:
         destination: reports
     - store_test_results:
         path: app/build/test-results
+
+
